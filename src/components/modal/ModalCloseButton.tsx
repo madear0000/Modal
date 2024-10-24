@@ -1,24 +1,10 @@
 import React from "react";
-import styled from "@emotion/styled";
+import { useModalContext } from "./modalContext";
 
-interface ModalCloseButtonProps {
-  onClose: () => void;
-}
+import { CloseButton } from "./modal-styled";
 
-const CloseButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  margin-left: 355px;
+export const ModalCloseButton: React.FC = () => {
+  const { onClose } = useModalContext();
 
-  &:hover {
-    background-color: #e9e9e9;
-  }
-`;
-
-export const ModalCloseButton: React.FC<ModalCloseButtonProps> = ({
-  onClose,
-}) => {
   return <CloseButton onClick={onClose}>&times;</CloseButton>;
 };

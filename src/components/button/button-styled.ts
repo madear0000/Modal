@@ -88,8 +88,15 @@ const StyledButton = styled.button<ButtonOwnProps>`
     `}
 
   &:disabled {
-    background-color: ${colors.neutral.disabled};
     color: ${colors.neutral.disabledText};
+    border: none;
+    ${({ variant }) => {
+      if (variant !== "link") {
+        return `background-color: ${colors.neutral.disabled};`;
+      } else {
+        return "";
+      }
+    }}
     cursor: not-allowed;
   }
 

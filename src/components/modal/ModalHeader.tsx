@@ -1,17 +1,9 @@
 import React from "react";
-import styled from "@emotion/styled";
+import { ModalProps } from "./modal.types";
+import { Header } from "./modal-styled";
 
-interface ModalHeaderProps {
-  children: React.ReactNode;
-}
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const ModalHeader: React.FC<ModalHeaderProps> = ({ children }) => {
+export const ModalHeader: React.FC<ModalProps> = (props) => {
+  const { children } = props;
   return (
     <Header>
       <h2>{children}</h2>

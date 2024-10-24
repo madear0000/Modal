@@ -1,31 +1,32 @@
-import React, { useState } from "react";
-import { Modal } from "./components/modal/Modal";
-import { ModalOverlay } from "./components/modal/ModalOverlay";
-import { ModalContent } from "./components/modal/ModalContent";
-import { ModalHeader } from "./components/modal/ModalHeader";
-import { ModalBody } from "./components/modal/ModalBody";
-import { ModalFooter } from "./components/modal/ModalFooter";
-import { ModalCloseButton } from "./components/modal/ModalCloseButton";
+import React from "react";
+import { useState } from "react";
+import { Modal } from "./components/modal/modal";
+import { ModalOverlay } from "./components/modal/modalOverlay";
+import { ModalContent } from "./components/modal/modalContent";
+import { ModalHeader } from "./components/modal/modalHeader";
+import { ModalBody } from "./components/modal/modalBody";
+import { ModalFooter } from "./components/modal/modalFooter";
+import { ModalCloseButton } from "./components/modal/modalCloseButton";
 import Button from "./components/button/Button";
 
 const App: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleOpen = () => setIsOpen(true);
-  const handleClose = () => setIsOpen(false);
+  const onOpen = () => setIsOpen(true);
+  const onClose = () => setIsOpen(false);
 
   return (
     <div>
-      <Button colorScheme="primary" onClick={handleOpen} variant="outline">
+      <Button colorScheme="primary" onClick={onOpen} variant="outline">
         Open Modal
       </Button>
 
-      <Modal isOpen={isOpen}>
+      <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent sizeModal="lg" isCentered>
           <ModalHeader>
             Modal Title
-            <ModalCloseButton onClose={handleClose} />
+            <ModalCloseButton />
           </ModalHeader>
           <ModalBody>
             <p>
@@ -36,9 +37,10 @@ const App: React.FC = () => {
             </p>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="primary" onClick={handleClose}>
+            <Button colorScheme="primary" onClick={onClose}>
               Close
             </Button>
+            <Button variant="ghost">Secondary Action</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

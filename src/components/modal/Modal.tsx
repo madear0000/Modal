@@ -1,12 +1,17 @@
 import React from "react";
+import { ModalProps } from "./modal.types";
+import { ModalProvider } from "./modalContext";
 
-interface ModalProps {
-  isOpen: boolean;
-  children: React.ReactNode;
-}
+export const Modal: React.FC<ModalProps> = (props) => {
+  const { isOpen, onClose, children } = props;
 
-export const Modal: React.FC<ModalProps> = ({ isOpen, children }) => {
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
 
-  return <div>{children}</div>;
+  return (
+    <ModalProvider isOpen={isOpen} onClose={onClose}>
+      {children}
+    </ModalProvider>
+  );
 };

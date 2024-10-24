@@ -1,14 +1,8 @@
 import React from "react";
-import styled from "@emotion/styled";
+import { Body } from "./modal-styled";
+import { ModalProps } from "./modal.types";
 
-interface ModalBodyProps {
-  children: React.ReactNode;
-}
-
-const Body = styled.div`
-  margin-top: 20px;
-`;
-
-export const ModalBody: React.FC<ModalBodyProps> = ({ children }) => {
+export const ModalBody: React.FC<ModalProps> = (props) => {
+  const { children } = props;
   return <Body>{children}</Body>;
 };
