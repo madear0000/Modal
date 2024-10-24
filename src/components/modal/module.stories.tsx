@@ -1,12 +1,12 @@
 import { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
 import { Modal } from "./modal";
-import { ModalContent } from "./modalContent";
-import { ModalHeader } from "./modalHeader";
-import { ModalBody } from "./modalBody";
-import { ModalFooter } from "./modalFooter";
-import { ModalCloseButton } from "./modalCloseButton";
-import { ModalOverlay } from "./modalOverlay";
+import { ModalContent } from "./modal-content";
+import { ModalHeader } from "./modal-header";
+import { ModalBody } from "./modal-body";
+import { ModalFooter } from "./modal-footer";
+import { ModalCloseButton } from "./modal-close-button";
+import { ModalOverlay } from "./modal-overlay";
 import { ModalProps } from "./modal.types";
 import Button from "../button/Button";
 
@@ -19,6 +19,17 @@ const meta: Meta = {
       defaultValue: "md",
     },
     isCentered: {
+      type: "boolean",
+      control: { type: "boolean" },
+      defaultValue: true,
+    },
+    overlayClose: {
+      type: "boolean",
+      control: { type: "boolean" },
+      defaultValue: true,
+    },
+    escapeClose: {
+      type: "boolean",
       control: { type: "boolean" },
       defaultValue: true,
     },
@@ -38,7 +49,12 @@ export const Basic: StoryFn<ModalProps> = (args) => {
       <Button colorScheme="primary" onClick={onOpen} variant="outline">
         Open
       </Button>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        closeOverlayClose={args.overlayClose}
+        closeEscapeClose={args.escapeClose}
+      >
         <ModalOverlay />
         <ModalContent sizeModal={args.sizeModal} isCentered={args.isCentered}>
           <ModalHeader>

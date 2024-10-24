@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { ModalProps } from "./modal.types";
+import { ModalContentProps } from "./modal.types";
 
 export const Body = styled.div`
   margin-top: 20px;
@@ -13,13 +13,14 @@ export const CloseButton = styled.button`
   position: absolute;
   right: 0;
   margin-right: 20px;
+  transition: 0.5s;
   &:hover {
     border-radius: 8px;
     background-color: #e9e9e9;
   }
 `;
 
-export const Content = styled.div<ModalProps>`
+export const Content = styled.div<ModalContentProps>`
   position: fixed;
   top: ${({ isCentered }) => (isCentered ? "50%" : "30%")};
   left: 50%;

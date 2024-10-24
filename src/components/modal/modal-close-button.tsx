@@ -1,5 +1,5 @@
 import React from "react";
-import { useModalContext } from "./modalContext";
+import { useModalContext } from "./modal-context";
 
 import { CloseButton } from "./modal-styled";
 

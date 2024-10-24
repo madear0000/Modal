@@ -1,12 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { Modal } from "./components/modal/modal";
-import { ModalOverlay } from "./components/modal/modalOverlay";
-import { ModalContent } from "./components/modal/modalContent";
-import { ModalHeader } from "./components/modal/modalHeader";
-import { ModalBody } from "./components/modal/modalBody";
-import { ModalFooter } from "./components/modal/modalFooter";
-import { ModalCloseButton } from "./components/modal/modalCloseButton";
+import { ModalOverlay } from "./components/modal/modal-overlay";
+import { ModalContent } from "./components/modal/modal-content";
+import { ModalHeader } from "./components/modal/modal-header";
+import { ModalBody } from "./components/modal/modal-body";
+import { ModalFooter } from "./components/modal/modal-footer";
+import { ModalCloseButton } from "./components/modal/modal-close-button";
 import Button from "./components/button/Button";
 
 const App: React.FC = () => {
