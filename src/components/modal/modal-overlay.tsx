@@ -2,17 +2,25 @@ import { forwardRef } from "react";
 import { ModalOverlayProps } from "./modal.types";
 import { Overlay } from "./modal-styled";
 import { useModalContext } from "./modal-context";
+import React from "react";
 
 export const ModalOverlay = forwardRef<HTMLDivElement, ModalOverlayProps>(
   (props, ref) => {
-    const { closeOverlayClose, onClose } = useModalContext();
+    const { clickOverlayClose, onClose } = useModalContext();
 
     const handleOverlayClose = () => {
-      if (closeOverlayClose) {
+      if (clickOverlayClose) {
         onClose();
       }
     };
 
-    return <Overlay onClick={handleOverlayClose} ref={ref} {...props} />;
+    return (
+      <Overlay
+        data-testid="overlay"
+        onClick={handleOverlayClose}
+        ref={ref}
+        {...props}
+      />
+    );
   },
 );

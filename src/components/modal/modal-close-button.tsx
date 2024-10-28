@@ -6,5 +6,9 @@ import { CloseButton } from "./modal-styled";
 export const ModalCloseButton: React.FC = () => {
   const { onClose } = useModalContext();
 
-  return <CloseButton onClick={onClose}>&times;</CloseButton>;
+  return (
+    <CloseButton data-testid="close-button" onClick={onClose}>
+      &times;
+    </CloseButton>
+  );
 };

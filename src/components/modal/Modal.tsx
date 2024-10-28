@@ -2,42 +2,51 @@ import { forwardRef } from "react";
 import { useEffect } from "react";
 import { ModalProps } from "./modal.types";
 import { ModalProvider } from "./modal-context";
+import ReactDOM from "react-dom";
+import React from "react";
 
 export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
-  const { isOpen, onClose, children, closeOverlayClose, closeEscapeClose } =
-    props;
+  const {
+    isOpen,
+    onClose,
+    children,
+    clickOverlayClose,
+    clickEscapeClose,
+    sizeModal,
+    isCentered,
+  } = props;
 
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleEscape = (event: KeyboardEvent) => {
-      console.log("close");
-      if (event.key === "Escape" && closeEscapeClose) {
+      console.log("any");
+      if (event.key === "Escape" && clickEscapeClose) {
         onClose();
       }
     };
 
-    if (isOpen) {
-      document.addEventListener("keydown", handleEscape);
-    }
+    document.addEventListener("keydown", handleEscape);
 
     return () => {
-      if (isOpen) {
-        document.removeEventListener("keydown", handleEscape);
-      }
+      document.removeEventListener("keydown", handleEscape);
     };
-  }, [isOpen, closeEscapeClose, onClose]);
+  }, [isOpen, clickEscapeClose, onClose]);
 
   if (!isOpen) {
     return null;
   }
 
-  return (
+  return ReactDOM.createPortal(
     <ModalProvider
       isOpen={isOpen}
       onClose={onClose}
-      closeOverlayClose={closeOverlayClose}
-      ref={ref}
+      clickOverlayClose={clickOverlayClose}
+      sizeModal={sizeModal}
+      isCentered={isCentered}
     >
-      {children}
-    </ModalProvider>
+      <div ref={ref}>{children}</div>
+    </ModalProvider>,
+    document.body,
   );
 });

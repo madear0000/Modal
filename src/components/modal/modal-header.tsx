@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import { ModalHeaderProps } from "./modal.types";
 import { Header } from "./modal-styled";
+import React from "react";
 
 export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
   (props, ref) => {

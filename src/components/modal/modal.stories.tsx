@@ -8,7 +8,7 @@ import { ModalFooter } from "./modal-footer";
 import { ModalCloseButton } from "./modal-close-button";
 import { ModalOverlay } from "./modal-overlay";
 import { ModalProps } from "./modal.types";
-import Button from "../button/Button";
+import Button from "../button/button";
 
 const meta: Meta = {
   title: "Components / Modal",
@@ -21,17 +21,17 @@ const meta: Meta = {
     isCentered: {
       type: "boolean",
       control: { type: "boolean" },
-      defaultValue: true,
+      defaultValue: false,
     },
-    overlayClose: {
+    clickOverlayClose: {
       type: "boolean",
       control: { type: "boolean" },
-      defaultValue: true,
+      defaultValue: false,
     },
-    escapeClose: {
+    clickEscapeClose: {
       type: "boolean",
       control: { type: "boolean" },
-      defaultValue: true,
+      defaultValue: false,
     },
   },
 };
@@ -52,11 +52,13 @@ export const Basic: StoryFn<ModalProps> = (args) => {
       <Modal
         isOpen={isOpen}
         onClose={onClose}
-        closeOverlayClose={args.overlayClose}
-        closeEscapeClose={args.escapeClose}
+        clickOverlayClose={args.clickOverlayClose}
+        clickEscapeClose={args.clickEscapeClose}
+        sizeModal={args.sizeModal}
+        isCentered={args.isCentered}
       >
         <ModalOverlay />
-        <ModalContent sizeModal={args.sizeModal} isCentered={args.isCentered}>
+        <ModalContent>
           <ModalHeader>
             Modal
             <ModalCloseButton />

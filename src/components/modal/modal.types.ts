@@ -5,17 +5,21 @@ export interface ModalProps extends React.PropsWithChildren {
 
   onClose: () => void;
 
-  closeOverlayClose?: boolean;
+  clickOverlayClose?: boolean;
 
-  closeEscapeClose?: boolean;
+  clickEscapeClose?: boolean;
+
+  isCentered?: boolean;
+
+  sizeModal?: "sm" | "md" | "lg";
 }
 
 export interface ModalOverlayProps extends React.PropsWithChildren {}
 
 export interface ModalContentProps extends React.PropsWithChildren {
-  isCentered?: boolean;
-
   sizeModal?: "sm" | "md" | "lg";
+
+  isCentered?: boolean;
 }
 
 export interface ModalHeaderProps extends React.PropsWithChildren {}
@@ -28,4 +32,8 @@ export interface ModalContextState {
   isOpen: boolean;
 
   onClose: () => void;
+
+  sizeModal?: "sm" | "md" | "lg";
+
+  isCentered?: boolean;
 }

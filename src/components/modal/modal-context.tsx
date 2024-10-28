@@ -15,15 +15,24 @@ export function useModalContext() {
 }
 
 export const ModalProvider: React.FC<ModalProps> = (props) => {
-  const { isOpen, onClose, children, closeOverlayClose } = props;
+  const {
+    isOpen,
+    onClose,
+    children,
+    clickOverlayClose,
+    sizeModal,
+    isCentered,
+  } = props;
 
   const contextValue = useMemo<ModalContextState>(
     () => ({
       isOpen,
       onClose,
-      closeOverlayClose,
+      clickOverlayClose,
+      sizeModal,
+      isCentered,
     }),
-    [isOpen, onClose, closeOverlayClose],
+    [isOpen, onClose, clickOverlayClose, sizeModal, isCentered],
   );
 
   return (

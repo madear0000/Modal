@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { ModalContentProps } from "./modal.types";
+import React from "react";
 
 export const Body = styled.div`
   margin-top: 20px;
